@@ -1,1 +1,35 @@
-<p>home works!</p>
+<div class="container">
+    <table class="table mt-4">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Sexo</th>
+                <th class="text-center">Fecha de Nacimiento</th>
+                <th class="text-center">Editar Persona</th>
+                <th class="text-center">Eliminar Persona</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let persona of personas">
+                <td>{{persona.id}}</td>
+                <td>{{persona.nombre}}</td>
+                <td>{{persona.ap_paterno}}</td>
+                <td>{{persona.ap_materno}}</td>
+                <td>{{persona.sexo}}</td>
+                <td class="text-center">{{persona.f_nac}}</td>
+                <td class="text-center">
+                    <button class="btn btn-primary" (click)="putPersona(persona.id)">Editar</button>
+                </td>
+                <td class="text-center">
+                    <button class="btn btn-danger" (click)="deletePersona(persona.id)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    {{personas|json}}
+</div>
