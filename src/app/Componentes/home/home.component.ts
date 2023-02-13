@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonasService } from 'src/app/Servicios/personas.service';
 import { Persona } from 'src/app/Interfaces/persona';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,7 @@ export class HomeComponent implements OnInit {
 
   personas?: Persona[];
 
-  constructor(private personasService: PersonasService) { }
+  constructor(private personasService: PersonasService, private router: Router) { }
 
   ngOnInit(): void {
     this.getPersonas();
@@ -23,8 +24,12 @@ export class HomeComponent implements OnInit {
   }
 
   putPersona(id: number)
-  {}
+  {
+    this.router.navigate(['/modificar/', id]);
+  }
 
   deletePersona(id: number)
-  {}
+  {
+    this.personasService.eliminarPersona(id).subscribe(response => location.reload());
+  }
 }

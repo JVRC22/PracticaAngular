@@ -7,12 +7,14 @@ import { HomeComponent } from './Componentes/home/home.component';
 import { AgregarComponent } from './Componentes/agregar/agregar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModificarComponent } from './Componentes/modificar/modificar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    AgregarComponent
+    AgregarComponent,
+    ModificarComponent
   ],
   imports: [
     BrowserModule,

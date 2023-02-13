@@ -29,6 +29,6 @@ export class PersonasService {
   }
 
   mostrarUnico(id: number) {
-    return this.http.get<Persona>(this.url + '/mostrar' + '/' + id).pipe(retry(3));
+    return this.http.get<Persona>(this.url + '/mostrar/' + id).pipe(retry(3));
   }
 }
