@@ -6,20 +6,26 @@
 
         <hr>
 
-        <form action="" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+        <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
             <div class="mb-3">
                 <label for="name" class="form-label">Nombre:</label>
                 <input class="form-control" type="text" name="name" id="name" placeholder="Ingresa tu nombre" value="{{persona?.nombre}}" formControlName="nombre">
+
+                <div class="alert alert-danger mt-2" *ngIf="form.get('nombre')?.invalid && form.get('nombre')?.touched">El nombre es obligatorio</div>
             </div>
 
             <div class="mb-3">
                 <label for="ap_paterno" class="form-label">Apellido Paterno:</label>
                 <input class="form-control" type="text" name="ap_paterno" id="ap_paterno" placeholder="Ingresa tu apellido paterno" value={{persona?.ap_paterno}} formControlName="ap_paterno">
+
+                <div class="alert alert-danger mt-2" *ngIf="form.get('ap_paterno')?.invalid && form.get('ap_paterno')?.touched">El apellido paterno es obligatorio</div>
             </div>
 
             <div class="mb-3">
                 <label for="ap_materno" class="form-label">Apellido Materno:</label>
                 <input class="form-control" type="text" name="ap_materno" id="ap_materno" placeholder="Ingresa tu apellido materno" value={{persona?.ap_materno}} formControlName="ap_materno">
+
+                <div class="alert alert-danger mt-2" *ngIf="form.get('ap_materno')?.invalid && form.get('ap_materno')?.touched">El apellido materno es obligatorio</div>
             </div>
 
             <div class="mb-3">
@@ -28,17 +34,21 @@
                     <option value="M" [selected]="persona?.sexo === 'M'">Masculino</option>
                     <option value="F" [selected]="persona?.sexo === 'F'">Femenino</option>
                 </select>
+
+                <div class="alert alert-danger mt-2" *ngIf="form.get('sexo')?.invalid && form.get('sexo')?.touched">El sexo es obligatorio</div>
             </div>
 
             <div class="mb-3">
                 <label for="f_nac" class="form-label">Fecha de Nacimiento:</label>
                 <input class="form-control" type="date" name="f_nac" id="f_nac" value={{persona?.f_nac}} formControlName="f_nac">
+
+                <div class="alert alert-danger mt-2" *ngIf="form.get('f_nac')?.invalid && form.get('f_nac')?.touched">La fecha de nacimiento es obligatorio</div>
             </div>
 
             <hr>
 
             <div class="text-end">
-                <button class="btn btn-primary">Modificar Persona</button>
+                <button class="btn btn-primary" [disabled]="form.invalid">Modificar Persona</button>
             </div>
         </form>
     </div>

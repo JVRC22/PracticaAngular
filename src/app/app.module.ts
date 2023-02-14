@@ -8,13 +8,19 @@ import { AgregarComponent } from './Componentes/agregar/agregar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModificarComponent } from './Componentes/modificar/modificar.component';
+import { PageNotFoundComponent } from './Componentes/page-not-found/page-not-found.component';
+import { RegisterComponent } from './Componentes/User/register/register.component';
+import { LoginComponent } from './Componentes/User/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AgregarComponent,
-    ModificarComponent
+    ModificarComponent,
+    PageNotFoundComponent,
+    RegisterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
