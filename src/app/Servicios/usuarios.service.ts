@@ -12,6 +12,7 @@ export class UsuariosService {
   constructor(private http: HttpClient) { }
 
   private url: string = 'http://127.0.0.1:8000/api';
+  token?: string;
 
   isAdministrator():Observable<boolean>{
     return this.http.get<boolean>(this.url + '/isAdministrator');
