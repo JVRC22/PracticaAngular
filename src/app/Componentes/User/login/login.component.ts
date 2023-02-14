@@ -26,8 +26,7 @@ export class LoginComponent implements OnInit {
    }
 
   onLogin(usuario: Usuario){
-    this.usuariosService.login(usuario).subscribe(response => {localStorage.setItem('token', response.token); localStorage.setItem('id', response.user.id); localStorage.setItem('nombre', response.user.nombre);});
-    this.router.navigate(['/home'], { queryParams: { showMessage: true, message: 'Sesion iniciada con exito.' } });
+    this.usuariosService.login(usuario).subscribe(response => {localStorage.setItem('token', response.token); localStorage.setItem('id', response.user.id); localStorage.setItem('nombre', response.user.nombre); this.router.navigate(['/home'], { queryParams: { showMessage: true, message: 'Sesion iniciada con exito.' } });});
   }
 }
  

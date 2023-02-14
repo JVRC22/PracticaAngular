@@ -37,7 +37,7 @@ export class ModificarComponent {
   }
 
   onSubmit(persona: Persona) {
-    this.personasService.actualizarPersona(persona, this.id).subscribe(response => console.log(response));
-    this.router.navigate(['/home'], { queryParams: { showMessage: true, message: 'Persona modificada con exito.' } });
+    this.personasService.actualizarPersona(persona, this.id).subscribe(response => {console.log(response); this.router.navigate(['/home'], { queryParams: { showMessage: true, message: 'Persona modificada con exito.' } });});
+    
   }
 }
