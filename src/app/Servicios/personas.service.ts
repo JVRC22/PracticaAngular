@@ -17,7 +17,7 @@ export class PersonasService {
   }
 
   agregarPersona(persona: Persona) {
-    return this.http.post<Persona>(this.url, persona);
+    return this.http.post<Persona>(this.url, persona).pipe(retry(3));
   }
 
   actualizarPersona(persona: Persona, id: number) {
