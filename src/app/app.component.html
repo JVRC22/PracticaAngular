@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-black">
+<nav class="navbar navbar-expand-lg bg-black" style="max-height: 60px;">
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -10,17 +10,24 @@
         
         <!--Iniciar Sesion-->
         <li class="nav-item me-5">
-          <a class="nav-link text-light" routerLink="login">Iniciar Sesion</a>
+          <a class="nav-link text-light" *ngIf="username; else loginLink">
+            <span>Bienvenido, {{username}}</span>
+            <span class="btn" (click)="cerrarSesion()" style="font-size: 12px;">Cerrar Sesion</span>
+          </a>
+
+          <ng-template #loginLink>
+            <a class="nav-link btn text-light" routerLink="login">Iniciar Sesion</a>
+          </ng-template>
         </li>
 
         <!--Home-->
         <li class="nav-item">
-          <a class="nav-link text-light" aria-current="page" routerLink="home">Home</a>
+          <a class="nav-link btn text-light" aria-current="page" routerLink="home">Home</a>
         </li>
 
         <!--Insertar-->
         <li class="nav-item">
-          <a class="nav-link text-light" routerLink="insertar">Insertar</a>
+          <a class="nav-link btn text-light" routerLink="insertar">Insertar</a>
         </li>
 
       </ul>

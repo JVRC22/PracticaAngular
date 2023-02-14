@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { PersonasService } from 'src/app/Servicios/personas.service';
 import { Persona } from 'src/app/Interfaces/persona';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,11 +10,19 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
+  showMessage: boolean = false;
+  message?: string;
+
   personas?: Persona[];
 
-  local = localStorage.getItem('token');
+  username = localStorage.getItem('nombre');
 
-  constructor(private personasService: PersonasService, private router: Router) { }
+  constructor(private personasService: PersonasService, private router: Router, private route: ActivatedRoute) {
+    this.route.queryParams.subscribe(params => {
+      this.showMessage = params['showMessage'];
+      this.message = params['message'];
+    });
+  }
 
   ngOnInit(): void {
     this.getPersonas();

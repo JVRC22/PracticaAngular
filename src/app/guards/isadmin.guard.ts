@@ -8,11 +8,14 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class IsadminGuard implements CanActivate {
+
   constructor(private usuariosService: UsuariosService, private route:Router) { }
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.usuariosService.isAdministrator().pipe(map((
+    
+      return this.usuariosService.isAdministrator().pipe(map((
       isAdmin => {
         if (isAdmin) {
           return true;

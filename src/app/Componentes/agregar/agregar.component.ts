@@ -29,6 +29,6 @@ export class AgregarComponent implements OnInit {
 
   onSubmit(persona: Persona) {
     this.personasService.agregarPersona(persona).subscribe(response => console.log(response));
-    this.router.navigate(['/home']);
+    this.router.navigate(['/home'], { queryParams: { showMessage: true, message: 'Persona agregada con exito.' } });
   }
 }

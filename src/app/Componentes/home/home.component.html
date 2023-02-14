@@ -1,4 +1,9 @@
 <div class="container">
+
+    <div *ngIf="showMessage" class="alert alert-success mt-4">
+        {{message}}
+    </div>
+
     <table class="table mt-4 mb-4">
         <thead class="table-dark">
             <tr>
@@ -30,6 +35,4 @@
             </tr>
         </tbody>
     </table>
-
-    {{local|json}}
 </div>

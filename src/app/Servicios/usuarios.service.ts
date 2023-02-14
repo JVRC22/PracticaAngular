@@ -24,11 +24,11 @@ export class UsuariosService {
 
   login(usuario: Usuario)
   {
-    return this.http.post<Usuario>(this.url + '/login', usuario).pipe(retry(3));
+    return this.http.post<any>(this.url + '/login', usuario).pipe(retry(3));
   }
 
-  logout(token: string)
+  logout()
   {
-    return this.http.post<Usuario>(this.url + '/logout', token).pipe(retry(3));
+    return this.http.get(this.url + '/logout').pipe(retry(3));
   }
 }
