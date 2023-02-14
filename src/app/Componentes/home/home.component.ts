@@ -32,6 +32,9 @@ export class HomeComponent implements OnInit {
 
   deletePersona(id: number)
   {
-    this.personasService.eliminarPersona(id).subscribe(response => location.reload());
+    if (confirm("¿Está seguro de eliminar la persona?"))
+    {
+      this.personasService.eliminarPersona(id).subscribe(response => location.reload());
+    }
   }
 }
