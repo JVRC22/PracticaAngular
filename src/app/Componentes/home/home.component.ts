@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { PersonasService } from 'src/app/Servicios/personas.service';
 import { Persona } from 'src/app/Interfaces/persona';
 import { Router } from '@angular/router';
@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   personas?: Persona[];
+
+  local = localStorage.getItem('token');
 
   constructor(private personasService: PersonasService, private router: Router) { }
 

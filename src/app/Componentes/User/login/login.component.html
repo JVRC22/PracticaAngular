@@ -6,15 +6,20 @@
 
         <hr>
 
-        <form [formGroup]="userForm" (submit)="onLogin()">
+        <form [formGroup]="form" (submit)="onLogin(form.value)">
             <div class="mb-3">
                 <label for="email">Email:</label>
-                <input formControlName="nombre" type="email" class="form-control" id="email" placeholder="Ingresa tu email">
+                <input type="email" class="form-control" id="email" placeholder="Ingresa tu email" formControlName="email">
+
+                <div class="alert alert-danger mt-2" *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+                    <span *ngIf="form.get('email')?.errors?.['required']">El email es obligatorio</span>
+                    <span *ngIf="form.get('email')?.errors?.['email']">El email debe ser valido</span>
+                </div>
             </div>
 
             <div class="mb-3">
                 <label for="password">Contraseña:</label>
-                <input formControlName="password" type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña">
+                <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña" formControlName="password">
             </div>
 
             <hr>
