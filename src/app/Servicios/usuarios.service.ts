@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Usuario } from '../Interfaces/usuario';
 import { HttpClient } from '@angular/common/http';
 import { retry } from 'rxjs';
+import { Validator, Validators } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
