@@ -12,6 +12,8 @@ import { PersonasService } from 'src/app/Servicios/personas.service';
 })
 export class ModificarComponent {
 
+  showError: boolean = false;
+
   form: FormGroup;
 
   id: number = 0;
@@ -37,7 +39,10 @@ export class ModificarComponent {
   }
 
   onSubmit(persona: Persona) {
-    this.personasService.actualizarPersona(persona, this.id).subscribe(response => {console.log(response); this.router.navigate(['/home'], { queryParams: { showMessage: true, message: 'Persona modificada con exito.' } });});
+    this.personasService.actualizarPersona(persona, this.id).subscribe(response => {
+      console.log(response); this.router.navigate(['/home'], 
+      { queryParams: { showMessage: true, message: 'Persona modificada con exito.' } });},
+      error => {console.log(error); this.showError = true;});
     
   }
 }

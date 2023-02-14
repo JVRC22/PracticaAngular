@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 
 export class AgregarComponent implements OnInit {
 
+  showError: boolean = false;
+
   form: FormGroup;
 
   constructor(private personasService: PersonasService, private fb: FormBuilder, private router: Router) {
@@ -28,6 +30,9 @@ export class AgregarComponent implements OnInit {
   }
 
   onSubmit(persona: Persona) {
-    this.personasService.agregarPersona(persona).subscribe(response => {console.log(response); this.router.navigate(['/home'], {queryParams: { showMessage: true, message: 'Persona agregada con exito.'}});});
+    this.personasService.agregarPersona(persona).subscribe(response => {
+      console.log(response); this.router.navigate(['/home'], 
+      {queryParams: { showMessage: true, message: 'Persona agregada con exito.'}});},
+      error => {console.log(error); this.showError = true;});
   }
 }
