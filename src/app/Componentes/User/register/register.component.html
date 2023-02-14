@@ -6,31 +6,35 @@
 
         <hr>
 
-        <form>
+        <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
             <div class="mb-3">
                 <label for="nombre">Nombre de usuario:</label>
-                <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre de usuario">
+                <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre de usuario" formControlName="nombre">
+
+                <div class="alert alert-danger mt-2" *ngIf="form.get('nombre')?.invalid && form.get('nombre')?.touched">El nombre es obligatorio</div>
             </div>
 
             <div class="mb-3">
                 <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" placeholder="Ingresa tu email">
+                <input type="email" class="form-control" id="email" placeholder="Ingresa tu email" formControlName="email">
+
+                <div class="alert alert-danger mt-2" *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+                    <span *ngIf="form.get('email')?.errors?.['required']">El email es obligatorio</span>
+                    <span *ngIf="form.get('email')?.errors?.['email']">El email debe ser valido</span>
+                </div>
             </div>
 
             <div class="mb-3">
                 <label for="password">Contraseña:</label>
-                <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña">
-            </div>
+                <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña" formControlName="password">
 
-            <div class="mb-3">
-                <label for="confirmPassword">Confirmar contraseña:</label>
-                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirma tu contraseña">
+                <div class="alert alert-danger mt-2" *ngIf="form.get('password')?.invalid && form.get('password')?.touched">La contraseña es obligatoria</div>
             </div>
 
             <hr>
 
             <div class="text-end">
-                <button type="submit" class="btn btn-primary">Registrarse</button>
+                <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Registrarse</button>
             </div>
         </form>
     </div>
