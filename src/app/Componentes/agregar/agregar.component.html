@@ -1,6 +1,7 @@
 <div class="container col-8 justify-content-center">
 
     <div *ngIf="showError" class="alert alert-danger mt-4">
+        <button type="button" class="btn-close pb-2" (click)="showError = false"></button>
         Error al agregar persona
     </div>
 

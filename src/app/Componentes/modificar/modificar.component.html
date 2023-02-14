@@ -2,6 +2,7 @@
     <div class="card p-3 mt-4 mb-4">
         
         <div *ngIf="showError" class="alert alert-danger mt-4">
+            <button type="button" class="btn-close pb-2" (click)="showError = false"></button>
             Error al modificar la persona
         </div>
 

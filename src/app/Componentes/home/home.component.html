@@ -1,6 +1,7 @@
 <div class="container">
 
     <div *ngIf="showMessage" class="alert alert-success mt-4">
+        <button type="button" class="btn-close pb-2" (click)="showMessage = false"></button>
         {{message}}
     </div>
 
