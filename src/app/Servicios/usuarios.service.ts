@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../Interfaces/usuario';
 import { HttpClient } from '@angular/common/http';
-import { retry } from 'rxjs';
+import { Observable, retry } from 'rxjs';
 import { Validator, Validators } from '@angular/forms';
 
 @Injectable({
@@ -12,6 +12,10 @@ export class UsuariosService {
   constructor(private http: HttpClient) { }
 
   private url: string = 'http://127.0.0.1:8000/api';
+
+  isAdministrator():Observable<boolean>{
+    return this.http.get<boolean>(this.url + '/isAdministrator');
+  }
 
   register(usuario: Usuario)
   {
